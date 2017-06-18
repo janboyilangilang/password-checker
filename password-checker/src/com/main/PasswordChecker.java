@@ -2,12 +2,13 @@ package com.main;
 
 public class PasswordChecker {
 	
-	public int checkPassword(String text) {
+	int checkPassword(String text) {
 		int counter = 0;
 		for (int i = 0; i <= text.length(); i++) {
 			for (int j = i; j <= text.length(); j++) {
 				String str = text.substring(i, j);
-				if(isValid(str)) {
+				if(isValid(str) && str.length() > 8) {
+					System.out.println("This is a valid password: " + str);
 					counter++;
 				}
 			}	
@@ -22,7 +23,7 @@ public class PasswordChecker {
 		return false;
 	}
 	
-	private boolean withUpperChar(String password) {
+	boolean withUpperChar(String password) {
 		for (int i = 0; i < password.length(); i++) {
 			if(Character.isUpperCase(password.charAt(i))) {
 				return true;
@@ -31,7 +32,7 @@ public class PasswordChecker {
 		return false;
 	}
 	
-	private boolean isLetterOnly(String password) {
+	boolean isLetterOnly(String password) {
 		for (int i = 0; i < password.length(); i++) {
 			if(!Character.isLetter(password.charAt(i))) {
 				return false;
